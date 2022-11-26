@@ -1,4 +1,4 @@
-#Setting up
+# Setting up
 
 First, follow https://reactnative.dev/docs/environment-setup
 
