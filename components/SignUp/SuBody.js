@@ -26,7 +26,7 @@ const SuBody = ({handleClick}) => {
       </View>
 
       <View style={styles.inputContainer}>
-        <FontAwesomeIcon icon="fa-solid fa-envelope" />
+        <FontAwesomeIcon icon="fa-solid fa-user" />
         <TextInput
           style={styles.input}
           onChangeText={onChangeFn}
@@ -45,7 +45,7 @@ const SuBody = ({handleClick}) => {
       </View>
 
       <View style={styles.inputContainer}>
-        <FontAwesomeIcon icon="fa-solid fa-envelope" />
+        <FontAwesomeIcon icon="fa-solid fa-lock" />
         <TextInput
           style={styles.input}
           onChangeText={onChangePassword}
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   },
   view: {
     paddingLeft: 32,
-    marginTop: -15,
+    paddingTop: 10,
   },
   updates: {
     marginTop: 7,

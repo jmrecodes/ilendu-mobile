@@ -17,6 +17,8 @@ import {faBraille} from '@fortawesome/free-solid-svg-icons/faBraille';
 import {faCircleNodes} from '@fortawesome/free-solid-svg-icons/faCircleNodes';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons/faEnvelope';
+import {faUser} from '@fortawesome/free-solid-svg-icons/faUser';
+import {faLock} from '@fortawesome/free-solid-svg-icons/faLock';
 import {library} from '@fortawesome/fontawesome-svg-core';
 
 library.add(
@@ -29,6 +31,8 @@ library.add(
   faCircleNodes,
   faChevronLeft,
   faEnvelope,
+  faUser,
+  faLock,
 );
 
 import Nav from './components/Nav';
