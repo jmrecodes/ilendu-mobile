@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, Button, Pressable} from 'react-native';
+import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import CheckBox from '@react-native-community/checkbox';
 
@@ -34,7 +34,7 @@ const SuBody = ({handleClick}) => {
           placeholder={'First Name'}
         />
 
-        <View style={styles.br}></View>
+        <View style={styles.br} />
 
         <TextInput
           style={[styles.input, styles.ln]}
@@ -57,24 +57,30 @@ const SuBody = ({handleClick}) => {
       <View style={styles.agreeUpdatesContainer}>
         <View style={[styles.inputContainer, styles.checkBoxContainer]}>
           <CheckBox
-            tintColors={{true: '#333', false: '#333'}}
+            onTintColor={'#333'}
+            onCheckColor={'#333'}
             disabled={false}
             value={toggleAgree}
             onValueChange={newValue => setToggleAgree(newValue)}
+            style={styles.checkBox}
           />
           <Text style={styles.tos}>I agree to the </Text>
           <Text style={[styles.tos, styles.bold]}>Terms of Service</Text>
           <Text style={styles.tos}> and</Text>
           <Text style={[styles.tos, styles.bold]}> Privacy Policy.</Text>
-          <Text style={[styles.tos, styles.bold, styles.view]}>View terms of services and privacy policy.</Text>
+          <Text style={[styles.tos, styles.bold, styles.view]}>
+            View terms of services and privacy policy.
+          </Text>
         </View>
 
         <View style={[styles.inputContainer, styles.checkBoxContainer]}>
           <CheckBox
-            tintColors={{true: '#333', false: '#333'}}
+            onTintColor={'#333'}
+            onCheckColor={'#333'}
             disabled={false}
             value={toggleUpdates}
             onValueChange={newValue => setToggleUpdates(newValue)}
+            style={styles.checkBox}
           />
           <Text style={[styles.tos, styles.updates]}>
             Yes, send me deals, discounts, and updates!
@@ -84,9 +90,14 @@ const SuBody = ({handleClick}) => {
 
       <Pressable
         onPress={handleClick}
-        style={styles.button}
-        android_ripple={{color: '#ccc', borderless: false}}>
-        <Text style={styles.buttonText}>Sign up with emai</Text>
+        android_ripple={{color: '#ccc', borderless: false}}
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed ? '#000' : '#333',
+          },
+          styles.button,
+        ]}>
+        <Text style={styles.buttonText}>Sign up with email</Text>
       </Pressable>
     </View>
   );
@@ -94,7 +105,6 @@ const SuBody = ({handleClick}) => {
 
 const styles = StyleSheet.create({
   body: {
-    paddingHorizontal: 50,
     paddingVertical: 65,
   },
   title: {
@@ -102,17 +112,23 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#333',
     paddingBottom: 30,
+    paddingHorizontal: 50,
   },
   inputContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginBottom: 30,
+    paddingHorizontal: 50,
   },
   agreeUpdatesContainer: {
     marginTop: 40,
   },
   checkBoxContainer: {
     marginTop: -10,
+    paddingHorizontal: 20,
+  },
+  checkBox: {
+    marginRight: 5,
   },
   input: {
     marginLeft: 10,
@@ -124,25 +140,25 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
   },
   ln: {
-    marginTop: 5,
+    marginTop: 20,
     marginLeft: 26,
   },
   tos: {
     fontSize: 12,
+    marginTop: -10,
   },
   bold: {
     fontWeight: 'bold',
   },
   view: {
-    paddingLeft: 32,
-    paddingTop: 10,
+    paddingLeft: 37,
   },
   updates: {
     marginTop: 7,
   },
   button: {
-    backgroundColor: '#333',
     borderRadius: 25,
+    marginHorizontal: 50,
   },
   buttonText: {
     color: '#eee',

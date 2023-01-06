@@ -49,17 +49,18 @@ const styles = StyleSheet.create({
   feature: {
     width: '100%',
     height: 400,
-    paddingTop: 60,
+    paddingTop: 50,
     paddingLeft: 30,
-    paddingBottom: 40,
+    paddingBottom: 20,
+    paddingRight: 75,
   },
   item: {
     flex: 1,
     flexDirection: 'row',
-    paddingRight: 50,
   },
   left: {
     paddingRight: 20,
+    paddingTop: 5,
   },
   itemTitle: {
     fontWeight: 'bold',

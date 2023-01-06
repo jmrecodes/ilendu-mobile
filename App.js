@@ -1,12 +1,10 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Image,
   View,
   StyleSheet,
-  ScrollView,
-  Animated,
   ActivityIndicator,
-  Text,
+  Platform,
 } from 'react-native';
 import {fab} from '@fortawesome/free-brands-svg-icons';
 import {faSearch} from '@fortawesome/free-solid-svg-icons/faSearch';
@@ -19,6 +17,10 @@ import {faChevronLeft} from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons/faEnvelope';
 import {faUser} from '@fortawesome/free-solid-svg-icons/faUser';
 import {faLock} from '@fortawesome/free-solid-svg-icons/faLock';
+import {faCircle} from '@fortawesome/free-solid-svg-icons/faCircle';
+import {faApple} from '@fortawesome/free-brands-svg-icons/faApple';
+import {faGoogle} from '@fortawesome/free-brands-svg-icons/faGoogle';
+import {faFacebook} from '@fortawesome/free-brands-svg-icons/faFacebook';
 import {library} from '@fortawesome/fontawesome-svg-core';
 
 library.add(
@@ -33,114 +35,66 @@ library.add(
   faEnvelope,
   faUser,
   faLock,
+  faCircle,
+  faApple,
+  faGoogle,
+  faFacebook,
 );
 
-import Nav from './components/Nav';
-import Header from './components/Header';
-import MainContainer from './components/MainContainer';
-import Welcome from './components/Welcome';
-import Feature from './components/Feature';
-import GetStarted from './components/GetStarted';
-import PopularArea from './components/PopularArea';
-import SuHeader from './components/SignUp/SuHeader';
-import SuBody from './components/SignUp/SuBody';
+import ShowContext from './components/ShowContext';
+import Home from './components/Home/Home';
+import SignUpOrLogin from './components/SignUpOrLogin/SignUpOrLogin';
+import SignUp from './components/SignUp/SignUp';
 
 const App = () => {
-  const [show, setShow] = useState(0);
-
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-
-  let fadeIn: function;
-  fadeIn = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  };
+  const [show, setShow] = useState('0');
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setShow(1);
+      setShow('1');
     }, 1000);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, []);
+  }, [setShow]);
 
   useEffect(() => {
-    if (show < 2) {
+    if (show < '2') {
       const timeout2 = setTimeout(() => {
-        setShow(2);
+        setShow('home');
       }, 1500);
 
       return () => {
         clearTimeout(timeout2);
-        fadeIn();
       };
     }
-  }, [fadeIn, show]);
+  }, [setShow, show]);
 
-  const showLogin = () => {
-    const timeout = setTimeout(() => {
-      setShow(3);
-    }, 500);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  };
-
-  const showHome = () => {
-    const timeout = setTimeout(() => {
-      setShow(2);
-    }, 500);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  };
-
-  return show === 0 ? (
-    <View style={styles.container0}>
-      <Image
-        source={require('./images/ilendu-white-logo.png')}
-        style={styles.img}
-      />
-    </View>
-  ) : show === 1 ? (
-    <View style={styles.container0}>
-      <ActivityIndicator size="large" color="#ccc" />
-    </View>
-  ) : show === 2 ? (
-    <Animated.View
-      style={[
-        styles.container,
-        {
-          // Bind opacity to animated value
-          opacity: fadeAnim,
-        },
-      ]}>
-      <Header />
-      <ScrollView style={styles.scroll}>
-        <MainContainer>
-          <Welcome />
-          <Feature />
-          <GetStarted />
-          <PopularArea />
-        </MainContainer>
-      </ScrollView>
-      <Nav handleClick={showLogin} />
-    </Animated.View>
-  ) : (
-    <View styles={styles.signup}>
-      <ScrollView>
-        <SuHeader handleClick={showHome} />
-        <SuBody handleClick={showHome} />
-      </ScrollView>
-    </View>
+  return (
+    <ShowContext.Provider value={{show, setShow}}>
+      {show === '0' ? (
+        <View style={styles.container0}>
+          <Image
+            source={require('./images/ilendu-white-logo.png')}
+            style={styles.img}
+            resizeMode='stretch'
+          />
+        </View>
+      ) : show === '1' ? (
+        <View style={styles.container0}>
+          <ActivityIndicator size="large" color="#ccc" />
+        </View>
+      ) : show === 'home' ? (
+        <Home />
+      ) : show === 'signUpOrLogin' ? (
+        <SignUpOrLogin />
+      ) : show === 'signUp' ? (
+        <SignUp />
+      ) : show === 'loginLocation' ? (
+        <SignUp />
+      ) : null}
+    </ShowContext.Provider>
   );
 };
 
@@ -151,14 +105,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  container: {
-    flex: 1,
-  },
-  signup: {
-    flex: 1,
-  },
   scroll: {
-    marginBottom: 70,
+    marginBottom: Platform.OS === 'ios' ? 95 : 70,
+  },
+  img: {
+    width: 237,
+    height: 52.5,
   },
 });
 

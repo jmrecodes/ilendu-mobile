@@ -15,39 +15,45 @@ const PopularArea = () => {
       <ScrollView
         horizontal={true}
         contentContainerStyle={styles.popularAreaContainer}
+        showsHorizontalScrollIndicator={false}
         style={styles.popularArea}>
         <View style={styles.area}>
           <ImageBackground
-            source={require('../images/image-regular.png')}
-            resizeMode="center"
+            source={require('../../images/miami.jpg')}
+            resizeMode="cover"
+            imageStyle={styles.imageStyle}
             style={styles.image}></ImageBackground>
         </View>
 
         <View style={styles.area}>
           <ImageBackground
-            source={require('../images/image-regular.png')}
-            resizeMode="center"
+            source={require('../../images/Unknown.jpg')}
+            resizeMode="cover"
+            imageStyle={styles.imageStyle}
             style={styles.image}></ImageBackground>
         </View>
 
         <View style={styles.area}>
           <ImageBackground
-            source={require('../images/image-regular.png')}
-            resizeMode="center"
+            source={require('../../images/Unknown-2.jpg')}
+            resizeMode="cover"
+            imageStyle={styles.imageStyle}
             style={styles.image}></ImageBackground>
         </View>
 
         <View style={styles.area}>
           <ImageBackground
-            source={require('../images/image-regular.png')}
-            resizeMode="center"
+            source={require('../../images/Unknown-3.jpg')}
+            resizeMode="cover"
+            imageStyle={styles.imageStyle}
             style={styles.image}></ImageBackground>
         </View>
 
         <View style={styles.area}>
           <ImageBackground
-            source={require('../images/image-regular.png')}
-            resizeMode="center"
+            source={require('../../images/Unknown-4.jpg')}
+            resizeMode="cover"
+            imageStyle={styles.imageStyle}
             style={styles.image}></ImageBackground>
         </View>
       </ScrollView>
@@ -72,10 +78,10 @@ const styles = StyleSheet.create({
   },
   popularArea: {
     paddingTop: 10,
-    paddingBottom: 20,
+    paddingBottom: 40,
     paddingLeft: 40,
     marginRight: -30,
-    marginBottom: -1,
+    marginBottom: 1,
   },
   area: {
     width: 90,
@@ -85,12 +91,15 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   image: {
-    width: 50,
-    height: 50,
-    top: '50%',
-    left: '50%',
-    marginTop: -25,
-    marginLeft: -25,
+    width: '100%',
+    height: '100%',
+    borderRadius: 45,
+  },
+  imageStyle: {
+    borderRadius: 45,
+    borderWidth: 7,
+    borderStyle: 'solid',
+    borderColor: 'rgba(0, 0, 0, .5)',
   },
 });
 

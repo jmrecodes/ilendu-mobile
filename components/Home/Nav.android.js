@@ -1,12 +1,25 @@
-import React from 'react';
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text, StyleSheet, Pressable, Platform} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import ShowContext from '../ShowContext';
 
-const Nav = ({handleClick}) => {
+const Nav = () => {
+  const {setShow} = useContext(ShowContext);
+
+  const showSignUpOrLogin = () => {
+    const timeout = setTimeout(() => {
+      setShow('signUpOrLogin');
+    }, 500);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
+
   return (
     <View style={styles.nav}>
       <Pressable
-        onPress={handleClick}
+        onPress={showSignUpOrLogin}
         android_ripple={{color: '#ccc', borderless: true}}>
         <View style={styles.navIcon}>
           <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
@@ -14,7 +27,7 @@ const Nav = ({handleClick}) => {
         </View>
       </Pressable>
       <Pressable
-        onPress={handleClick}
+        onPress={showSignUpOrLogin}
         android_ripple={{color: '#ccc', borderless: true}}>
         <View style={styles.navIcon}>
           <FontAwesomeIcon icon="fa-solid fa-heart" />
@@ -22,7 +35,7 @@ const Nav = ({handleClick}) => {
         </View>
       </Pressable>
       <Pressable
-        onPress={handleClick}
+        onPress={showSignUpOrLogin}
         android_ripple={{color: '#ccc', borderless: true}}>
         <View style={styles.navIcon}>
           <FontAwesomeIcon icon="fa-solid fa-circle-plus" />
@@ -30,7 +43,7 @@ const Nav = ({handleClick}) => {
         </View>
       </Pressable>
       <Pressable
-        onPress={handleClick}
+        onPress={showSignUpOrLogin}
         android_ripple={{color: '#ccc', borderless: true}}>
         <View style={styles.navIcon}>
           <FontAwesomeIcon icon="fa-solid fa-comments" />
@@ -38,7 +51,7 @@ const Nav = ({handleClick}) => {
         </View>
       </Pressable>
       <Pressable
-        onPress={handleClick}
+        onPress={showSignUpOrLogin}
         android_ripple={{color: '#ccc', borderless: true}}>
         <View style={styles.navIcon}>
           <FontAwesomeIcon icon="fa-solid fa-braille" />

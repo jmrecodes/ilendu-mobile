@@ -5,8 +5,8 @@ const Welcome = () => {
   return (
     <View style={styles.welcome}>
       <ImageBackground
-        source={require('../images/image-regular.png')}
-        resizeMode="center"
+        source={require('../../images/bg.png')}
+        resizeMode="cover"
         style={styles.image}>
         <View style={styles.imageText}>
           <Text style={styles.welcomeTitle}>
@@ -27,8 +27,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 300,
     backgroundColor: 'lightgray',
-    paddingTop: 50,
-    paddingBottom: 20,
   },
   image: {
     width: '100%',
@@ -36,15 +34,25 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   imageText: {
-    paddingLeft: 50,
+    paddingLeft: 20,
+    paddingBottom: 40,
   },
   welcomeTitle: {
     fontWeight: '600',
     fontSize: 30,
     width: '100%',
+    color: 'white',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -2, height: 2},
+    textShadowRadius: 20,
   },
   welcomeSub: {
     width: '100%',
+    color: 'white',
+    fontWeight: '700',
+    textShadowColor: 'rgba(0, 0, 0, 1)',
+    textShadowOffset: {width: -2, height: 2},
+    textShadowRadius: 5,
   },
 });
 

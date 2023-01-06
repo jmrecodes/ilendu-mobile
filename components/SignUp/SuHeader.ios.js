@@ -1,34 +1,39 @@
 import React from 'react';
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {View, Text, StyleSheet, Pressable, Platform} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
-const test = () => {
-  alert('ok');
-}
-
-const SuHeader = ({handleClick}) => {
+const SuHeader = ({handleClick, started}) => {
   return (
     <View style={styles.headerContainer}>
       <Pressable
         onPress={handleClick}
         android_ripple={{color: '#ccc', borderless: false}}
-        style={styles.header}>
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'rgba(33, 33, 33, .1)' : 'transparent',
+          },
+          styles.header,
+        ]}>
         <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
         <Text style={styles.text}>Go back</Text>
       </Pressable>
-      <Text style={styles.title}>Let's Get Started</Text>
+      { started && <Text style={styles.title}>Let's Get Started</Text> }
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  headerContainer: {
+    marginTop: 5,
+  },
   header: {
     flexDirection: 'row',
     paddingVertical: 15,
     paddingLeft: 15,
+    marginTop: 50,
   },
   text: {
-    fontWeight: '350',
+    fontWeight: '300',
     marginTop: -2.5,
     marginLeft: 15,
   },

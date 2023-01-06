@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {Platform, View, Text, StyleSheet} from 'react-native';
 
 const Header = () => {
   return (
@@ -13,7 +13,7 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   header: {
-    paddingTop: 15,
+    paddingTop: Platform.OS === 'ios' ? 60 : 15,
     paddingBottom: 15,
   },
   text: {
