@@ -1,7 +1,13 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, StyleSheet, TextInput, Pressable, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Pressable,
+  Image,
+} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import CheckBox from '@react-native-community/checkbox';
 import ShowContext from '../ShowContext';
 
 const SuolBody = () => {
@@ -10,7 +16,7 @@ const SuolBody = () => {
   const showSignUp = () => {
     const timeout = setTimeout(() => {
       setShow('signUp');
-    }, 500);
+    }, 100);
 
     return () => {
       clearTimeout(timeout);

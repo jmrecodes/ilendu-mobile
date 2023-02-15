@@ -26,7 +26,7 @@ const SignUpOrLogin = () => {
   const showHome = () => {
     const timeout = setTimeout(() => {
       setShow('home');
-    }, 500);
+    }, 100);
 
     return () => {
       clearTimeout(timeout);

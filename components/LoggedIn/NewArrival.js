@@ -8,10 +8,9 @@ import {
 } from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
-const PopularArea = () => {
+const NewArrival = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Browse by popular area</Text>
       <ScrollView
         horizontal={true}
         contentContainerStyle={styles.popularAreaContainer}
@@ -19,7 +18,7 @@ const PopularArea = () => {
         style={styles.popularArea}>
         <View style={styles.area}>
           <ImageBackground
-            source={require('../../images/miami.jpg')}
+            source={require('../../images/image-regular.png')}
             resizeMode="cover"
             imageStyle={styles.imageStyle}
             style={styles.image}></ImageBackground>
@@ -27,7 +26,7 @@ const PopularArea = () => {
 
         <View style={styles.area}>
           <ImageBackground
-            source={require('../../images/Unknown.jpg')}
+            source={require('../../images/image-regular.png')}
             resizeMode="cover"
             imageStyle={styles.imageStyle}
             style={styles.image}></ImageBackground>
@@ -35,7 +34,7 @@ const PopularArea = () => {
 
         <View style={styles.area}>
           <ImageBackground
-            source={require('../../images/Unknown-2.jpg')}
+            source={require('../../images/image-regular.png')}
             resizeMode="cover"
             imageStyle={styles.imageStyle}
             style={styles.image}></ImageBackground>
@@ -43,7 +42,7 @@ const PopularArea = () => {
 
         <View style={styles.area}>
           <ImageBackground
-            source={require('../../images/Unknown-3.jpg')}
+            source={require('../../images/image-regular.png')}
             resizeMode="cover"
             imageStyle={styles.imageStyle}
             style={styles.image}></ImageBackground>
@@ -51,7 +50,7 @@ const PopularArea = () => {
 
         <View style={styles.area}>
           <ImageBackground
-            source={require('../../images/Unknown-4.jpg')}
+            source={require('../../images/image-regular.png')}
             resizeMode="cover"
             imageStyle={styles.imageStyle}
             style={styles.image}></ImageBackground>
@@ -77,7 +76,6 @@ const styles = StyleSheet.create({
     paddingRight: 90,
   },
   popularArea: {
-    paddingTop: 10,
     paddingBottom: 40,
     paddingLeft: 40,
     marginRight: -30,
@@ -86,21 +84,15 @@ const styles = StyleSheet.create({
   area: {
     width: 90,
     height: 90,
-    borderRadius: 45,
     backgroundColor: '#dedede',
     marginRight: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   image: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 45,
-  },
-  imageStyle: {
-    borderRadius: 45,
-    borderWidth: 7,
-    borderStyle: 'solid',
-    borderColor: 'rgba(0, 0, 0, 0.5)',
+    width: 60,
+    height: 60,
   },
 });
 
-export default PopularArea;
+export default NewArrival;

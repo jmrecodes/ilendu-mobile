@@ -25,8 +25,8 @@ const SignUp = () => {
 
   const showHome = () => {
     const timeout = setTimeout(() => {
-      setShow('signUpOrLogin');
-    }, 500);
+      setShow('loggedIn');
+    }, 100);
 
     return () => {
       clearTimeout(timeout);
@@ -42,8 +42,8 @@ const SignUp = () => {
         },
       ]}>
       <ScrollView>
-        <SuHeader started={true} handleClick={showHome}/>
-        <SuBody handleClick={showHome}/>
+        <SuHeader started={true} handleClick={showHome} />
+        <SuBody handleClick={showHome} />
       </ScrollView>
     </Animated.View>
   );

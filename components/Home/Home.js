@@ -8,7 +8,7 @@ import GetStarted from './GetStarted';
 import PopularArea from './PopularArea';
 import Nav from './Nav';
 
-const Home = ({showScreen}) => {
+const Home = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   let fadeIn: function;

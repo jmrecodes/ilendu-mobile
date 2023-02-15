@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, ImageBackground, Button, Pressable} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  Button,
+  Pressable,
+} from 'react-native';
 
 const GetStarted = () => {
   return (

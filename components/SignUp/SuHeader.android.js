@@ -12,15 +12,12 @@ const SuHeader = ({handleClick, started}) => {
         <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
         <Text style={styles.text}>Go back</Text>
       </Pressable>
-      started && <Text style={styles.title}>Let's Get Started</Text>
+      {started && <Text style={styles.title}>Let's Get Started</Text>}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    backgroundColor: 'red',
-  },
   header: {
     flexDirection: 'row',
     paddingVertical: 15,

@@ -10,7 +10,7 @@ const Nav = () => {
   const showSignUpOrLogin = () => {
     const timeout = setTimeout(() => {
       setShow('signUpOrLogin');
-    }, 500);
+    }, 100);
 
     return () => {
       clearTimeout(timeout);

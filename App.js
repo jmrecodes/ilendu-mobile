@@ -21,6 +21,11 @@ import {faCircle} from '@fortawesome/free-solid-svg-icons/faCircle';
 import {faApple} from '@fortawesome/free-brands-svg-icons/faApple';
 import {faGoogle} from '@fortawesome/free-brands-svg-icons/faGoogle';
 import {faFacebook} from '@fortawesome/free-brands-svg-icons/faFacebook';
+import {faBars} from '@fortawesome/free-solid-svg-icons/faBars';
+import {faShop} from '@fortawesome/free-solid-svg-icons/faShop';
+import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass';
+import {faChevronRight} from '@fortawesome/free-solid-svg-icons/faChevronRight';
+
 import {library} from '@fortawesome/fontawesome-svg-core';
 
 library.add(
@@ -39,12 +44,18 @@ library.add(
   faApple,
   faGoogle,
   faFacebook,
+  faBars,
+  faShop,
+  faMagnifyingGlass,
+  faChevronRight,
 );
 
 import ShowContext from './components/ShowContext';
 import Home from './components/Home/Home';
 import SignUpOrLogin from './components/SignUpOrLogin/SignUpOrLogin';
 import SignUp from './components/SignUp/SignUp';
+import UserHome from './components/LoggedIn/UserHome';
+import Dashboard from './components/LoggedIn/Dashboard';
 
 const App = () => {
   const [show, setShow] = useState('0');
@@ -78,7 +89,7 @@ const App = () => {
           <Image
             source={require('./images/ilendu-white-logo.png')}
             style={styles.img}
-            resizeMode='stretch'
+            resizeMode="stretch"
           />
         </View>
       ) : show === '1' ? (
@@ -91,8 +102,10 @@ const App = () => {
         <SignUpOrLogin />
       ) : show === 'signUp' ? (
         <SignUp />
-      ) : show === 'loginLocation' ? (
-        <SignUp />
+      ) : show === 'loggedIn' ? (
+        <UserHome />
+      ) : show === 'dashboard' ? (
+        <Dashboard />
       ) : null}
     </ShowContext.Provider>
   );
