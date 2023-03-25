@@ -95,7 +95,7 @@ const Nav = () => {
 
 const styles = StyleSheet.create({
   nav: {
-    backgroundColor: '#fff',
+    backgroundColor: 'rgb(250, 250, 250)',
     position: 'absolute',
     bottom: 0,
     height: 80,

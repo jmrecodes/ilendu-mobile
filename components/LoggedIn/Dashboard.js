@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {
   Animated,
   Platform,
@@ -18,9 +18,31 @@ import FeaturedItem from './FeaturedItem';
 import QuickSearchTag from './QuickSearchTag';
 import ComingSoon from './ComingSoon';
 import QuickAccess from './QuickAccess';
+import ShowContext from '../ShowContext';
 
 const Dashboard = () => {
+  const {setShow} = useContext(ShowContext);
   const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  const showFeaturedItems = () => {
+    const timeout = setTimeout(() => {
+      setShow('featuredItems');
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
+
+  const showQuickAcessMore = () => {
+    const timeout = setTimeout(() => {
+      setShow('categories');
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
 
   let fadeIn: function;
   fadeIn = () => {
@@ -66,8 +88,16 @@ const Dashboard = () => {
             <PopularCategories />
 
             <Pressable
+              onPress={showQuickAcessMore}
               android_ripple={{color: '#ccc', borderless: true}}
-              style={styles.button}>
+              style={({pressed}) => [
+                {
+                  backgroundColor: pressed
+                    ? 'rgba(240, 240, 240, .5)'
+                    : '#fff',
+                },
+                styles.button,
+              ]}>
               <View style={styles.navIcon}>
                 <Text style={styles.navText}>SEE ALL CATEGORIES</Text>
                 <FontAwesomeIcon
@@ -84,8 +114,16 @@ const Dashboard = () => {
             <FeaturedItem />
 
             <Pressable
+              onPress={showFeaturedItems}
               android_ripple={{color: '#ccc', borderless: true}}
-              style={styles.button}>
+              style={({pressed}) => [
+                {
+                  backgroundColor: pressed
+                    ? 'rgba(240, 240, 240, .5)'
+                    : '#fff',
+                },
+                styles.button,
+              ]}>
               <View style={styles.navIcon}>
                 <Text style={styles.navText}>EXPLORE MORE</Text>
                 <FontAwesomeIcon
@@ -146,7 +184,6 @@ const styles = StyleSheet.create({
     paddingRight: 5,
     paddingVertical: 10,
     width: '60%',
-    backgroundColor: '#fff',
     borderRadius: 20,
     borderWidth: 1,
     borderStyle: 'solid',

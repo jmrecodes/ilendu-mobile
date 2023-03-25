@@ -1,27 +1,76 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import ShowContext from '../ShowContext';
 
-const NewArrival = () => {
+const PopularCategories = () => {
+  const {setShow} = useContext(ShowContext);
+
+  const showFeaturedItems = () => {
+    const timeout = setTimeout(() => {
+      setShow('featuredItems');
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.area}>
-        <Text style={styles.h3}>Category name</Text>
-        <Text style={styles.pWhite}>Lorem ipsum dolor sit amet.</Text>
-        <FontAwesomeIcon style={styles.icon} icon="fa-solid fa-chevron-right" />
-      </View>
+      <Pressable
+        onPress={showFeaturedItems}
+        android_ripple={{color: '#ccc', borderless: true}}
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed
+              ? 'rgba(78, 78, 78, .8)'
+              : '#4e4e4e',
+          },
+          styles.press,
+        ]}>
+        <View style={styles.area}>
+          <Text style={styles.h3}>Category name</Text>
+          <Text style={styles.pWhite}>Lorem ipsum dolor sit amet.</Text>
+          <FontAwesomeIcon style={styles.icon} icon="fa-solid fa-chevron-right" />
+        </View>
+      </Pressable>
 
-      <View style={styles.area}>
-        <Text style={styles.h3}>Category name</Text>
-        <Text style={styles.pWhite}>Lorem ipsum dolor sit amet.</Text>
-        <FontAwesomeIcon style={styles.icon} icon="fa-solid fa-chevron-right" />
-      </View>
+      <Pressable
+        onPress={showFeaturedItems}
+        android_ripple={{color: '#ccc', borderless: true}}
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed
+              ? 'rgba(78, 78, 78, .8)'
+              : '#4e4e4e',
+          },
+          styles.press,
+        ]}>
+        <View style={styles.area}>
+          <Text style={styles.h3}>Category name</Text>
+          <Text style={styles.pWhite}>Lorem ipsum dolor sit amet.</Text>
+          <FontAwesomeIcon style={styles.icon} icon="fa-solid fa-chevron-right" />
+        </View>
+      </Pressable>
 
-      <View style={styles.area}>
-        <Text style={styles.h3}>Category name</Text>
-        <Text style={styles.pWhite}>Lorem ipsum dolor sit amet.</Text>
-        <FontAwesomeIcon style={styles.icon} icon="fa-solid fa-chevron-right" />
-      </View>
+      <Pressable
+        onPress={showFeaturedItems}
+        android_ripple={{color: '#ccc', borderless: true}}
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed
+              ? 'rgba(78, 78, 78, .8)'
+              : '#4e4e4e',
+          },
+          styles.press,
+        ]}>
+        <View style={styles.area}>
+          <Text style={styles.h3}>Category name</Text>
+          <Text style={styles.pWhite}>Lorem ipsum dolor sit amet.</Text>
+          <FontAwesomeIcon style={styles.icon} icon="fa-solid fa-chevron-right" />
+        </View>
+      </Pressable>
     </View>
   );
 };
@@ -34,9 +83,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   area: {
-    width: '90%',
+    width: '100%',
     height: 130,
-    backgroundColor: '#4e4e4e',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     paddingRight: 40,
@@ -57,6 +105,10 @@ const styles = StyleSheet.create({
     bottom: 30,
     marginRight: -25,
   },
+  press: {
+    width: '90%',
+    marginBottom: 10,
+  },
 });
 
-export default NewArrival;
+export default PopularCategories;

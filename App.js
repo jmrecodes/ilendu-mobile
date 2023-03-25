@@ -9,6 +9,7 @@ import {
 import {fab} from '@fortawesome/free-brands-svg-icons';
 import {faSearch} from '@fortawesome/free-solid-svg-icons/faSearch';
 import {faHeart} from '@fortawesome/free-solid-svg-icons/faHeart';
+import {faHeart as faHeart2} from '@fortawesome/free-regular-svg-icons/faHeart';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons/faPlusCircle';
 import {faComments} from '@fortawesome/free-solid-svg-icons/faComments';
 import {faBraille} from '@fortawesome/free-solid-svg-icons/faBraille';
@@ -18,6 +19,7 @@ import {faEnvelope} from '@fortawesome/free-solid-svg-icons/faEnvelope';
 import {faUser} from '@fortawesome/free-solid-svg-icons/faUser';
 import {faLock} from '@fortawesome/free-solid-svg-icons/faLock';
 import {faCircle} from '@fortawesome/free-solid-svg-icons/faCircle';
+import {faCircle as faCircle2} from '@fortawesome/free-regular-svg-icons/faCircle';
 import {faApple} from '@fortawesome/free-brands-svg-icons/faApple';
 import {faGoogle} from '@fortawesome/free-brands-svg-icons/faGoogle';
 import {faFacebook} from '@fortawesome/free-brands-svg-icons/faFacebook';
@@ -25,6 +27,11 @@ import {faBars} from '@fortawesome/free-solid-svg-icons/faBars';
 import {faShop} from '@fortawesome/free-solid-svg-icons/faShop';
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass';
 import {faChevronRight} from '@fortawesome/free-solid-svg-icons/faChevronRight';
+import {faChevronDown} from '@fortawesome/free-solid-svg-icons/faChevronDown';
+import {faArrowUpFromBracket} from '@fortawesome/free-solid-svg-icons/faArrowUpFromBracket';
+import {faStar} from '@fortawesome/free-solid-svg-icons/faStar';
+import {faDownload} from '@fortawesome/free-solid-svg-icons/faDownload';
+import {faFilter} from '@fortawesome/free-solid-svg-icons/faFilter';
 
 import {library} from '@fortawesome/fontawesome-svg-core';
 
@@ -32,6 +39,7 @@ library.add(
   fab,
   faSearch,
   faHeart,
+  faHeart2,
   faPlusCircle,
   faComments,
   faBraille,
@@ -41,6 +49,7 @@ library.add(
   faUser,
   faLock,
   faCircle,
+  faCircle2,
   faApple,
   faGoogle,
   faFacebook,
@@ -48,6 +57,11 @@ library.add(
   faShop,
   faMagnifyingGlass,
   faChevronRight,
+  faChevronDown,
+  faArrowUpFromBracket,
+  faStar,
+  faDownload,
+  faFilter,
 );
 
 import ShowContext from './components/ShowContext';
@@ -56,6 +70,9 @@ import SignUpOrLogin from './components/SignUpOrLogin/SignUpOrLogin';
 import SignUp from './components/SignUp/SignUp';
 import UserHome from './components/LoggedIn/UserHome';
 import Dashboard from './components/LoggedIn/Dashboard';
+import ProductDetail from './components/LoggedIn/Product/ProductDetail';
+import FeaturedItemMore from './components/LoggedIn/FeaturedItemMore';
+import QuickAccessMore from './components/LoggedIn/QuickAccessMore';
 
 const App = () => {
   const [show, setShow] = useState('0');
@@ -106,6 +123,12 @@ const App = () => {
         <UserHome />
       ) : show === 'dashboard' ? (
         <Dashboard />
+      ) : show === 'product' ? (
+        <ProductDetail />
+      ) : show === 'featuredItems' ? (
+        <FeaturedItemMore />
+      ) : show === 'categories' ? (
+        <QuickAccessMore />
       ) : null}
     </ShowContext.Provider>
   );

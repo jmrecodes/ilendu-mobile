@@ -1,14 +1,27 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ImageBackground,
-  ScrollView,
+  ScrollView, Pressable,
 } from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import ShowContext from '../ShowContext';
 
 const NewArrival = () => {
+  const {show, setShow} = useContext(ShowContext);
+
+  const showProductDetail = () => {
+    const timeout = setTimeout(() => {
+      setShow('product');
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -17,43 +30,93 @@ const NewArrival = () => {
         showsHorizontalScrollIndicator={false}
         style={styles.popularArea}>
         <View style={styles.area}>
-          <ImageBackground
-            source={require('../../images/image-regular.png')}
-            resizeMode="cover"
-            imageStyle={styles.imageStyle}
-            style={styles.image}></ImageBackground>
+          <Pressable
+            onPress={showProductDetail}
+            android_ripple={{color: '#ccc', borderless: true}}
+            style={({pressed}) => [
+              {
+                backgroundColor: pressed ? 'rgba(33, 33, 33, .1)' : 'transparent',
+              },
+              styles.product,
+            ]}>
+            <ImageBackground
+              source={require('../../images/image-regular.png')}
+              resizeMode="cover"
+              imageStyle={styles.imageStyle}
+              style={styles.image}></ImageBackground>
+          </Pressable>
         </View>
 
         <View style={styles.area}>
-          <ImageBackground
-            source={require('../../images/image-regular.png')}
-            resizeMode="cover"
-            imageStyle={styles.imageStyle}
-            style={styles.image}></ImageBackground>
+          <Pressable
+            onPress={showProductDetail}
+            android_ripple={{color: '#ccc', borderless: true}}
+            style={({pressed}) => [
+              {
+                backgroundColor: pressed ? 'rgba(33, 33, 33, .1)' : 'transparent',
+              },
+              styles.product,
+            ]}>
+            <ImageBackground
+              source={require('../../images/image-regular.png')}
+              resizeMode="cover"
+              imageStyle={styles.imageStyle}
+              style={styles.image}></ImageBackground>
+          </Pressable>
         </View>
 
         <View style={styles.area}>
-          <ImageBackground
-            source={require('../../images/image-regular.png')}
-            resizeMode="cover"
-            imageStyle={styles.imageStyle}
-            style={styles.image}></ImageBackground>
+          <Pressable
+            onPress={showProductDetail}
+            android_ripple={{color: '#ccc', borderless: true}}
+            style={({pressed}) => [
+              {
+                backgroundColor: pressed ? 'rgba(33, 33, 33, .1)' : 'transparent',
+              },
+              styles.product,
+            ]}>
+            <ImageBackground
+              source={require('../../images/image-regular.png')}
+              resizeMode="cover"
+              imageStyle={styles.imageStyle}
+              style={styles.image}></ImageBackground>
+          </Pressable>
         </View>
 
         <View style={styles.area}>
-          <ImageBackground
-            source={require('../../images/image-regular.png')}
-            resizeMode="cover"
-            imageStyle={styles.imageStyle}
-            style={styles.image}></ImageBackground>
+          <Pressable
+            onPress={showProductDetail}
+            android_ripple={{color: '#ccc', borderless: true}}
+            style={({pressed}) => [
+              {
+                backgroundColor: pressed ? 'rgba(33, 33, 33, .1)' : 'transparent',
+              },
+              styles.product,
+            ]}>
+            <ImageBackground
+              source={require('../../images/image-regular.png')}
+              resizeMode="cover"
+              imageStyle={styles.imageStyle}
+              style={styles.image}></ImageBackground>
+          </Pressable>
         </View>
 
         <View style={styles.area}>
-          <ImageBackground
-            source={require('../../images/image-regular.png')}
-            resizeMode="cover"
-            imageStyle={styles.imageStyle}
-            style={styles.image}></ImageBackground>
+          <Pressable
+            onPress={showProductDetail}
+            android_ripple={{color: '#ccc', borderless: true}}
+            style={({pressed}) => [
+              {
+                backgroundColor: pressed ? 'rgba(33, 33, 33, .1)' : 'transparent',
+              },
+              styles.product,
+            ]}>
+            <ImageBackground
+              source={require('../../images/image-regular.png')}
+              resizeMode="cover"
+              imageStyle={styles.imageStyle}
+              style={styles.image}></ImageBackground>
+          </Pressable>
         </View>
       </ScrollView>
     </View>
@@ -86,6 +149,10 @@ const styles = StyleSheet.create({
     height: 90,
     backgroundColor: '#dedede',
     marginRight: 20,
+  },
+  product: {
+    width: 90,
+    height: 90,
     justifyContent: 'center',
     alignItems: 'center',
   },
