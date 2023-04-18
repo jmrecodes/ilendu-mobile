@@ -11,9 +11,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3ED6290EA4A63399EEF744F2 /* libPods-ilendu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6325381482EF275CE217B248 /* libPods-ilendu.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A94A559451CDB478CB2842DE /* libPods-ilendu-ilenduTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A8572C6D765CCC7F031A05C /* libPods-ilendu-ilenduTests.a */; };
-		D45E8A5A7517CA4FF70E02D9 /* libPods-ilendu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB73DDE3DD9768D124DD525 /* libPods-ilendu.a */; };
+		B5612AAE35C03158746CF652 /* libPods-ilendu-ilenduTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E74328342EC92B27156F621A /* libPods-ilendu-ilenduTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +36,13 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ilendu/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ilendu/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ilendu/main.m; sourceTree = "<group>"; };
-		268EE8D9C55A3D444B2F2036 /* Pods-ilendu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ilendu.debug.xcconfig"; path = "Target Support Files/Pods-ilendu/Pods-ilendu.debug.xcconfig"; sourceTree = "<group>"; };
-		6A8572C6D765CCC7F031A05C /* libPods-ilendu-ilenduTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ilendu-ilenduTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CB73DDE3DD9768D124DD525 /* libPods-ilendu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ilendu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7ED29135DCEE7EF02A47A84B /* Pods-ilendu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ilendu.release.xcconfig"; path = "Target Support Files/Pods-ilendu/Pods-ilendu.release.xcconfig"; sourceTree = "<group>"; };
+		413C192D22701A04C7DC87ED /* Pods-ilendu-ilenduTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ilendu-ilenduTests.debug.xcconfig"; path = "Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests.debug.xcconfig"; sourceTree = "<group>"; };
+		54D6A519F2286D99EBEF384A /* Pods-ilendu-ilenduTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ilendu-ilenduTests.release.xcconfig"; path = "Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests.release.xcconfig"; sourceTree = "<group>"; };
+		6325381482EF275CE217B248 /* libPods-ilendu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ilendu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ilendu/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D2A1B7E38939D71CE1CB2D86 /* Pods-ilendu-ilenduTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ilendu-ilenduTests.release.xcconfig"; path = "Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests.release.xcconfig"; sourceTree = "<group>"; };
-		E52AE38D17EFE3BD1B89B78E /* Pods-ilendu-ilenduTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ilendu-ilenduTests.debug.xcconfig"; path = "Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D1A35224A4841093E31E29A5 /* Pods-ilendu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ilendu.debug.xcconfig"; path = "Target Support Files/Pods-ilendu/Pods-ilendu.debug.xcconfig"; sourceTree = "<group>"; };
+		E11C4BDA3B415A3E99BC1B46 /* Pods-ilendu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ilendu.release.xcconfig"; path = "Target Support Files/Pods-ilendu/Pods-ilendu.release.xcconfig"; sourceTree = "<group>"; };
+		E74328342EC92B27156F621A /* libPods-ilendu-ilenduTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ilendu-ilenduTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A94A559451CDB478CB2842DE /* libPods-ilendu-ilenduTests.a in Frameworks */,
+				B5612AAE35C03158746CF652 /* libPods-ilendu-ilenduTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D45E8A5A7517CA4FF70E02D9 /* libPods-ilendu.a in Frameworks */,
+				3ED6290EA4A63399EEF744F2 /* libPods-ilendu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				7CB73DDE3DD9768D124DD525 /* libPods-ilendu.a */,
-				6A8572C6D765CCC7F031A05C /* libPods-ilendu-ilenduTests.a */,
+				6325381482EF275CE217B248 /* libPods-ilendu.a */,
+				E74328342EC92B27156F621A /* libPods-ilendu-ilenduTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,10 +140,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				268EE8D9C55A3D444B2F2036 /* Pods-ilendu.debug.xcconfig */,
-				7ED29135DCEE7EF02A47A84B /* Pods-ilendu.release.xcconfig */,
-				E52AE38D17EFE3BD1B89B78E /* Pods-ilendu-ilenduTests.debug.xcconfig */,
-				D2A1B7E38939D71CE1CB2D86 /* Pods-ilendu-ilenduTests.release.xcconfig */,
+				D1A35224A4841093E31E29A5 /* Pods-ilendu.debug.xcconfig */,
+				E11C4BDA3B415A3E99BC1B46 /* Pods-ilendu.release.xcconfig */,
+				413C192D22701A04C7DC87ED /* Pods-ilendu-ilenduTests.debug.xcconfig */,
+				54D6A519F2286D99EBEF384A /* Pods-ilendu-ilenduTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -155,12 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ilenduTests" */;
 			buildPhases = (
-				721198214FFCFE70BD034D04 /* [CP] Check Pods Manifest.lock */,
+				2A592F03DC99AC91EFCE989D /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				41AE2D2896686E5EA6203A48 /* [CP] Embed Pods Frameworks */,
-				75E1BDA76FB2E5494CA92D01 /* [CP] Copy Pods Resources */,
+				FB6EA010A8E699E48FA25FE0 /* [CP] Embed Pods Frameworks */,
+				02FD5F7750AB389B53EE2052 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,14 +176,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ilendu" */;
 			buildPhases = (
-				9AEC7CA4D69823D522284375 /* [CP] Check Pods Manifest.lock */,
+				4281BC697C07ED8DB4C9A0EA /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				FA1FAED241BF8DA0EA419667 /* [CP] Embed Pods Frameworks */,
-				A5669E919812A6F2BC3B0AA3 /* [CP] Copy Pods Resources */,
+				3558B9B8C2B6129DC9C1CF64 /* [CP] Embed Pods Frameworks */,
+				705F57627AF26834B546E8E0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,24 +266,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		41AE2D2896686E5EA6203A48 /* [CP] Embed Pods Frameworks */ = {
+		02FD5F7750AB389B53EE2052 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		721198214FFCFE70BD034D04 /* [CP] Check Pods Manifest.lock */ = {
+		2A592F03DC99AC91EFCE989D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,24 +305,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		75E1BDA76FB2E5494CA92D01 /* [CP] Copy Pods Resources */ = {
+		3558B9B8C2B6129DC9C1CF64 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ilendu/Pods-ilendu-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ilendu/Pods-ilendu-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ilendu/Pods-ilendu-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9AEC7CA4D69823D522284375 /* [CP] Check Pods Manifest.lock */ = {
+		4281BC697C07ED8DB4C9A0EA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -344,7 +344,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A5669E919812A6F2BC3B0AA3 /* [CP] Copy Pods Resources */ = {
+		705F57627AF26834B546E8E0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -361,21 +361,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ilendu/Pods-ilendu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FA1FAED241BF8DA0EA419667 /* [CP] Embed Pods Frameworks */ = {
+		FB6EA010A8E699E48FA25FE0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ilendu/Pods-ilendu-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ilendu/Pods-ilendu-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ilendu/Pods-ilendu-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ilendu-ilenduTests/Pods-ilendu-ilenduTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -430,7 +430,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E52AE38D17EFE3BD1B89B78E /* Pods-ilendu-ilenduTests.debug.xcconfig */;
+			baseConfigurationReference = 413C192D22701A04C7DC87ED /* Pods-ilendu-ilenduTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -459,7 +459,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2A1B7E38939D71CE1CB2D86 /* Pods-ilendu-ilenduTests.release.xcconfig */;
+			baseConfigurationReference = 54D6A519F2286D99EBEF384A /* Pods-ilendu-ilenduTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -485,7 +485,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 268EE8D9C55A3D444B2F2036 /* Pods-ilendu.debug.xcconfig */;
+			baseConfigurationReference = D1A35224A4841093E31E29A5 /* Pods-ilendu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -520,7 +520,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7ED29135DCEE7EF02A47A84B /* Pods-ilendu.release.xcconfig */;
+			baseConfigurationReference = E11C4BDA3B415A3E99BC1B46 /* Pods-ilendu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
