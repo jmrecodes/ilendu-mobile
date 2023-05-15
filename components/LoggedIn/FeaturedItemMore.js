@@ -7,7 +7,7 @@ import {
   ScrollView, Text, Platform, Pressable,
 } from 'react-native';
 import Header from './UserHeader';
-import Nav from '../Home/Nav';
+import Nav from './Nav';
 import ShowContext from '../ShowContext';
 
 const FeaturedItemMore = () => {

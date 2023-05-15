@@ -1,10 +1,16 @@
-import {StyleSheet, ScrollView, View, Animated} from 'react-native';
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Animated,
+  ImageBackground,
+} from 'react-native';
 import SuHeader from '../SignUp/SuHeader';
 import SuolBody from './SuolBody';
 import React, {useContext, useEffect, useRef} from 'react';
 import ShowContext from '../ShowContext';
 
-const SignUpOrLogin = () => {
+const SignUpOrLogin = ({hide = false}) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   let fadeIn: function;
@@ -25,7 +31,7 @@ const SignUpOrLogin = () => {
 
   const showHome = () => {
     const timeout = setTimeout(() => {
-      setShow('home');
+      setShow('home2');
     }, 100);
 
     return () => {
@@ -42,9 +48,18 @@ const SignUpOrLogin = () => {
           opacity: fadeAnim,
         },
       ]}>
-      <ScrollView>
-        <SuHeader handleClick={showHome} />
-        <SuolBody />
+      <ScrollView contentContainerStyle={styles.scroll}>
+        <ImageBackground
+          source={require('../../images/bg-register.png')}
+          resizeMode="cover"
+          style={styles.image}>
+          {hide === false && <SuHeader handleClick={showHome} /> }
+          {hide === false ? (
+            <SuolBody />
+          ) : (
+            <SuolBody hide={true} />
+          )}
+        </ImageBackground>
       </ScrollView>
     </Animated.View>
   );
@@ -53,6 +68,12 @@ const SignUpOrLogin = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'rgb(242, 242, 242)',
+    flex: 1,
+  },
+  scroll: {
+    flex: 1,
+  },
+  image: {
     flex: 1,
   },
 });

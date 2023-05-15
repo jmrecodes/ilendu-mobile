@@ -32,7 +32,12 @@ import {faArrowUpFromBracket} from '@fortawesome/free-solid-svg-icons/faArrowUpF
 import {faStar} from '@fortawesome/free-solid-svg-icons/faStar';
 import {faDownload} from '@fortawesome/free-solid-svg-icons/faDownload';
 import {faFilter} from '@fortawesome/free-solid-svg-icons/faFilter';
-
+import {faPhone} from '@fortawesome/free-solid-svg-icons/faPhone';
+import {faCircleXmark} from '@fortawesome/free-regular-svg-icons/faCircleXmark';
+import {faArrowTurnUp} from '@fortawesome/free-solid-svg-icons/faArrowTurnUp';
+import {faXmark} from '@fortawesome/free-solid-svg-icons/faXmark';
+import {faPen} from '@fortawesome/free-solid-svg-icons/faPen';
+import {faHands} from '@fortawesome/free-solid-svg-icons/faHands';
 import {library} from '@fortawesome/fontawesome-svg-core';
 
 library.add(
@@ -62,6 +67,12 @@ library.add(
   faStar,
   faDownload,
   faFilter,
+  faPhone,
+  faCircleXmark,
+  faArrowTurnUp,
+  faXmark,
+  faPen,
+  faHands,
 );
 
 import ShowContext from './components/ShowContext';
@@ -73,6 +84,13 @@ import Dashboard from './components/LoggedIn/Dashboard';
 import ProductDetail from './components/LoggedIn/Product/ProductDetail';
 import FeaturedItemMore from './components/LoggedIn/FeaturedItemMore';
 import QuickAccessMore from './components/LoggedIn/QuickAccessMore';
+import Search from './components/LoggedIn/Search';
+import Favorite from './components/LoggedIn/Product/Favorite/Favorite';
+import Inbox from './components/LoggedIn/Inbox/Inbox';
+import More from './components/LoggedIn/Product/More';
+import AccountSettings from './components/LoggedIn/Settings/Settings';
+import MessageDetail from './components/LoggedIn/Inbox/MessageDetail';
+import ReserveDetail from './components/LoggedIn/Product/Reserve/ReserveDetail';
 
 const App = () => {
   const [show, setShow] = useState('0');
@@ -104,7 +122,7 @@ const App = () => {
       {show === '0' ? (
         <View style={styles.container0}>
           <Image
-            source={require('./images/ilendu-white-logo.png')}
+            source={require('./images/ilendu-app-white-logo.png')}
             style={styles.img}
             resizeMode="stretch"
           />
@@ -115,10 +133,16 @@ const App = () => {
         </View>
       ) : show === 'home' ? (
         <Home />
+      ) : show === 'home2' ? (
+        <Home start={true} />
+      ) : show === 'signUpOrLoginNew' ? (
+        <SignUpOrLogin hide={true} />
       ) : show === 'signUpOrLogin' ? (
         <SignUpOrLogin />
       ) : show === 'signUp' ? (
         <SignUp />
+      ) : show === 'signUp2' ? (
+        <SignUp hide={true} />
       ) : show === 'loggedIn' ? (
         <UserHome />
       ) : show === 'dashboard' ? (
@@ -129,6 +153,20 @@ const App = () => {
         <FeaturedItemMore />
       ) : show === 'categories' ? (
         <QuickAccessMore />
+      ) : show === 'search' ? (
+        <Search />
+      ) : show === 'favorite' ? (
+        <Favorite />
+      ) : show === 'inbox' ? (
+        <Inbox />
+      ) : show === 'more' ? (
+        <More />
+      ) : show === 'settings' ? (
+        <AccountSettings />
+      ) : show === 'message' ? (
+        <MessageDetail />
+      ) : show === 'reserve' ? (
+        <ReserveDetail />
       ) : null}
     </ShowContext.Provider>
   );
@@ -145,8 +183,8 @@ const styles = StyleSheet.create({
     marginBottom: Platform.OS === 'ios' ? 95 : 70,
   },
   img: {
-    width: 237,
-    height: 52.5,
+    width: 148.4,
+    height: 142.8,
   },
 });
 

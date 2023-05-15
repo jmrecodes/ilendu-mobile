@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Header from './UserHeader';
 import MainContainer from '../MainContainer';
-import Nav from '../Home/Nav';
+import Nav from './Nav';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 const UserHome = () => {

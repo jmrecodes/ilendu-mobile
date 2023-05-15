@@ -9,13 +9,14 @@ import {
 } from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import ShowContext from '../ShowContext';
+import LinearGradient from 'react-native-linear-gradient';
 
-const SuolBody = () => {
+const SuolBody = ({hide = false}) => {
   const {setShow} = useContext(ShowContext);
 
   const showSignUp = () => {
     const timeout = setTimeout(() => {
-      setShow('signUp');
+      setShow(hide === false ? 'signUp' : 'signUp2');
     }, 100);
 
     return () => {
@@ -23,12 +24,32 @@ const SuolBody = () => {
     };
   };
 
+  const showHome = () => {
+    setShow('home2');
+  };
+
   return (
     <View style={styles.body}>
+      { hide === false ? (
+        <View style={styles.logoCon}>
+          <Image
+            style={styles.logo}
+            source={require('../../images/ilendu-app-black-logo.png')}
+          />
+        </View>
+      ) : (
+        <View style={[styles.logoCon, styles.logoConStart]}>
+          <Image
+            style={styles.logo}
+            source={require('../../images/ilendu-app-black-logo.png')}
+          />
+        </View>
+      )}
+
       <Pressable
         style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'rgba(0, 0, 0, .5)' : '#000',
+            backgroundColor: pressed ? 'rgb(33, 33, 33)' : '#000',
           },
           styles.button,
           styles.country,
@@ -36,7 +57,7 @@ const SuolBody = () => {
         android_ripple={{color: '#ccc', borderless: false}}>
         <View style={styles.country}>
           <Image
-            source={require('../../images/circle-white.png')}
+            source={require('../../images/circle-chile.png')}
             style={styles.circle}
           />
           <Text style={styles.countryText}>Chile</Text>
@@ -47,30 +68,68 @@ const SuolBody = () => {
         </View>
       </Pressable>
 
-      <View style={styles.ilenduContainer}>
-        <Image source={require('../../images/ilendu-horizonal-logo.png')} />
-
-        <Image
-          source={require('../../images/lender.png')}
-          style={styles.ilenduBg}
-        />
-      </View>
+      <Pressable
+        onPress={showSignUp}
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, .7)',
+          },
+          styles.button,
+          styles.buttonWhite,
+          styles.buttonApple,
+        ]}
+        android_ripple={{color: '#ccc', borderless: false}}>
+        <View style={styles.buttonTextContainer}>
+          <FontAwesomeIcon
+            style={styles.icon}
+            size={30}
+            icon="fa-brands fa-apple"
+            color={'#fff'}
+          />
+          <Text style={styles.buttonText}>Continue with Apple</Text>
+        </View>
+      </Pressable>
 
       <Pressable
         onPress={showSignUp}
         style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'rgba(255, 255, 255, .9)' : '#fff',
+            backgroundColor: pressed ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, .7)',
           },
           styles.button,
           styles.buttonWhite,
+          styles.buttonGoogle,
         ]}
         android_ripple={{color: '#ccc', borderless: false}}>
         <View style={styles.buttonTextContainer}>
-          <FontAwesomeIcon style={styles.icon} size={30} icon="fa-brands fa-apple" />
-          <Text style={[styles.buttonText, styles.buttonWhiteText]}>
-            Continue with Apple
-          </Text>
+          <FontAwesomeIcon
+            style={styles.icon}
+            size={30}
+            icon="fa-brands fa-google"
+          />
+          <Text style={[styles.buttonText, styles.buttonWhiteText]}>Continue with Google</Text>
+        </View>
+      </Pressable>
+
+      <Pressable
+        onPress={showSignUp}
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'rgba(56, 103, 172, 1)' : 'rgba(56, 103, 172, .7)',
+          },
+          styles.button,
+          styles.buttonWhite,
+          styles.buttonFb,
+        ]}
+        android_ripple={{color: '#ccc', borderless: false}}>
+        <View style={styles.buttonTextContainer}>
+          <FontAwesomeIcon
+            style={styles.icon}
+            size={30}
+            icon="fa-brands fa-facebook"
+            color={'#fff'}
+          />
+          <Text style={styles.buttonText}>Continue with Facebook</Text>
         </View>
       </Pressable>
 
@@ -82,36 +141,22 @@ const SuolBody = () => {
           },
           styles.button,
           styles.buttonWhite,
+          styles.buttonPhoneNumber,
         ]}
         android_ripple={{color: '#ccc', borderless: false}}>
         <View style={styles.buttonTextContainer}>
-          <FontAwesomeIcon style={styles.icon} size={30} icon="fa-brands fa-google" />
-          <Text style={[styles.buttonText, styles.buttonWhiteText]}>
-            Continue with Google
-          </Text>
+          <FontAwesomeIcon
+            style={styles.icon}
+            size={30}
+            icon="fa-solid fa-phone"
+            color={'#fff'}
+          />
+          <Text style={styles.buttonText}>Continue with phone number</Text>
         </View>
       </Pressable>
 
       <Pressable
-        onPress={showSignUp}
-        style={({pressed}) => [
-          {
-            backgroundColor: pressed ? 'rgba(255, 255, 255, .9)' : '#fff',
-          },
-          styles.button,
-          styles.buttonWhite,
-        ]}
-        android_ripple={{color: '#ccc', borderless: false}}>
-        <View style={styles.buttonTextContainer}>
-          <FontAwesomeIcon style={styles.icon} size={30} icon="fa-brands fa-facebook" />
-          <Text style={[styles.buttonText, styles.buttonWhiteText]}>
-            Continue with Facebook
-          </Text>
-        </View>
-      </Pressable>
-
-      <Pressable
-        onPress={showSignUp}
+        onPress={showHome}
         style={({pressed}) => [
           {
             backgroundColor: pressed ? 'rgba(0, 0, 0, .5)' : '#000',
@@ -119,8 +164,16 @@ const SuolBody = () => {
           styles.button,
         ]}
         android_ripple={{color: '#ccc', borderless: false}}>
-        <Text style={[styles.buttonText, styles.signUp]}>Email sign up</Text>
+        <LinearGradient
+          colors={['#C96FD8', '#C96FD8', '#DD8593']}
+          style={styles.buttonLg}>
+          <Text style={[styles.buttonText, styles.signUp]}>GET STARTED</Text>
+        </LinearGradient>
       </Pressable>
+
+      <Text style={styles.login}>
+        Already have an account? Login.
+      </Text>
     </View>
   );
 };
@@ -129,10 +182,21 @@ const styles = StyleSheet.create({
   body: {
     paddingVertical: 35,
   },
+  logoCon: {
+    alignItems: 'center',
+    marginBottom: 50,
+  },
+  logoConStart: {
+    marginTop: 30,
+  },
+  logo: {
+    width: 165,
+    height: 35,
+  },
   country: {
-    width: 250,
+    width: 200,
     alignSelf: 'center',
-    paddingVertical: 5,
+    paddingVertical: 2,
     paddingLeft: 5,
     paddingRight: 20,
     flexDirection: 'row',
@@ -182,28 +246,48 @@ const styles = StyleSheet.create({
     shadowRadius: 4.65,
     elevation: 6,
   },
+  buttonLg: {
+    borderRadius: 25,
+  },
   buttonWhite: {
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  buttonApple: {
+    marginTop: 200,
+  },
+  buttonGoogle: {
+
+  },
+  buttonFb: {
+
+  },
+  buttonPhoneNumber: {
+    backgroundColor: 'rgba(95, 160, 110, .7)',
   },
   icon: {
     marginTop: 5,
   },
   buttonTextContainer: {
-    width: 180,
     flexDirection: 'row',
   },
   buttonText: {
     color: '#eee',
     textAlign: 'center',
     paddingVertical: 15,
+    paddingLeft: 5,
   },
   buttonWhiteText: {
     color: '#333',
-    paddingLeft: 5,
   },
   signUp: {
     fontWeight: '800',
+  },
+  login: {
+    color: '#fff',
+    textAlign: 'center',
+    marginVertical: 10,
+    fontWeight: '600',
   },
 });
 

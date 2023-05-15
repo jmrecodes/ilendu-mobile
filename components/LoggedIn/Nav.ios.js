@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, Pressable, Platform} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import ShowContext from '../ShowContext';
+import commonStyles from './Product/commonStyles';
 
 const Nav = () => {
   const {setShow} = useContext(ShowContext);
@@ -17,10 +18,50 @@ const Nav = () => {
     };
   };
 
+  const showSearch = () => {
+    const timeout = setTimeout(() => {
+      setShow('search');
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
+
+  const showFavorite = () => {
+    const timeout = setTimeout(() => {
+      setShow('favorite');
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
+
+  const showInbox = () => {
+    const timeout = setTimeout(() => {
+      setShow('inbox');
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
+
+  const showMore = () => {
+    const timeout = setTimeout(() => {
+      setShow('more');
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
+
   return (
     <View style={styles.nav}>
       <Pressable
-        onPress={showSignUpOrLogin}
+        onPress={showSearch}
         android_ripple={{color: '#ccc', borderless: true}}
         style={({pressed}) => [
           {
@@ -34,7 +75,7 @@ const Nav = () => {
         </View>
       </Pressable>
       <Pressable
-        onPress={showSignUpOrLogin}
+        onPress={showFavorite}
         android_ripple={{color: '#ccc', borderless: true}}
         style={({pressed}) => [
           {
@@ -44,11 +85,10 @@ const Nav = () => {
         ]}>
         <View style={styles.navIcon}>
           <FontAwesomeIcon icon="fa-solid fa-heart" />
-          <Text style={styles.navText}>Favorite</Text>
+          <Text style={styles.navText}>Wish list</Text>
         </View>
       </Pressable>
       <Pressable
-        onPress={showSignUpOrLogin}
         android_ripple={{color: '#ccc', borderless: true}}
         style={({pressed}) => [
           {
@@ -62,7 +102,7 @@ const Nav = () => {
         </View>
       </Pressable>
       <Pressable
-        onPress={showSignUpOrLogin}
+        onPress={showInbox}
         android_ripple={{color: '#ccc', borderless: true}}
         style={({pressed}) => [
           {
@@ -71,12 +111,17 @@ const Nav = () => {
           styles.press,
         ]}>
         <View style={styles.navIcon}>
-          <FontAwesomeIcon icon="fa-solid fa-comments" />
+          <View style={styles.inboxNum}>
+            <View style={styles.num}>
+              <Text style={commonStyles.white}>1</Text>
+            </View>
+          </View>
+          <FontAwesomeIcon style={styles.front} icon="fa-solid fa-comments" />
           <Text style={styles.navText}>Inbox</Text>
         </View>
       </Pressable>
       <Pressable
-        onPress={showSignUpOrLogin}
+        onPress={showMore}
         android_ripple={{color: '#ccc', borderless: true}}
         style={({pressed}) => [
           {
@@ -113,6 +158,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: 60,
     height: 60,
+    position: 'relative',
   },
   press: {
     borderRadius: 30,
@@ -121,6 +167,19 @@ const styles = StyleSheet.create({
   },
   navText: {
     fontWeight: '300',
+  },
+  inboxNum: {
+    position: 'absolute',
+    top: 5,
+    paddingLeft: 10,
+  },
+  num: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 15,
+    height: 15,
+    borderRadius: 7.5,
+    backgroundColor: '#4226F1',
   },
 });
 

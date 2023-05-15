@@ -4,11 +4,14 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  ScrollView, Pressable, Animated, Platform,
+  ScrollView,
+  Pressable,
+  Animated,
+  Platform,
 } from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import Header from './UserHeader';
-import Nav from '../Home/Nav';
+import Nav from './Nav';
 import ShowContext from '../ShowContext';
 
 const QuickAccessMore = () => {

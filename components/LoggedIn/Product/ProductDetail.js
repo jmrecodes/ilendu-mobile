@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import Header from '../UserHeader';
-import Nav from '../../Home/Nav';
+import Nav from '../Nav';
 import Tabs from './Tabs';
 import Image from './Image';
 import Detail from './Detail';
