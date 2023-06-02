@@ -1,8 +1,16 @@
-import {StyleSheet, ScrollView, View, Animated} from 'react-native';
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Animated,
+  ImageBackground,
+} from 'react-native';
 import SuHeader from './SuHeader';
 import SuBody from './SuBody';
 import React, {useContext, useEffect, useRef} from 'react';
 import ShowContext from '../ShowContext';
+import LoginBody from './LoginBody';
+import YourinContext from '../YourinContext';
 
 const SignUp = ({hide = false}) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -21,7 +29,8 @@ const SignUp = ({hide = false}) => {
     fadeIn();
   });
 
-  const {setShow} = useContext(ShowContext);
+  const {setYourin} = useContext(YourinContext);
+  const {show, setShow} = useContext(ShowContext);
 
   const showHome = () => {
     const timeout = setTimeout(() => {
@@ -35,7 +44,19 @@ const SignUp = ({hide = false}) => {
 
   const showDashboard = () => {
     const timeout = setTimeout(() => {
-      setShow('dashboard');
+      setYourin('0');
+      setShow('loggedIn');
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
+
+  const showDashboard2 = () => {
+    const timeout = setTimeout(() => {
+      setYourin('hide');
+      setShow('loggedIn');
     }, 100);
 
     return () => {
@@ -56,21 +77,41 @@ const SignUp = ({hide = false}) => {
   return (
     <Animated.View
       style={[
+        styles.container,
         {
           // Bind opacity to animated value
           opacity: fadeAnim,
         },
       ]}>
-      <ScrollView>
-        {hide === false ? (
-          <SuHeader started={true} handleClick={showHome} />
-        ) : (
-          <SuHeader started={true} handleClick={showSignupOrLogin} />
-        )}
-        <SuBody handleClick={showDashboard} />
-      </ScrollView>
+      <ImageBackground
+        source={require('../../images/fondo.png')}
+        resizeMode="cover"
+        style={styles.image}>
+        <ScrollView>
+          {hide === false ? (
+            <SuHeader started={true} login={show !== 'login' ? false : true} handleClick={showHome} />
+          ) : (
+            <SuHeader started={true} login={show !== 'login' ? false : true} handleClick={showSignupOrLogin} />
+          )}
+          {show !== 'login' ? (
+            <SuBody handleClick={showDashboard} />
+          ) : (
+            <LoginBody handleClick={showDashboard2} />
+          )}
+        </ScrollView>
+      </ImageBackground>
     </Animated.View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'rgb(242, 242, 242)',
+  },
+  image: {
+    flex: 1,
+  },
+});
 
 export default SignUp;

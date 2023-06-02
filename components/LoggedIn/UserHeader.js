@@ -1,5 +1,5 @@
 import React, {useContext, useRef, useState} from 'react';
-import {Platform, View, StyleSheet, Image, Pressable, Text, Animated, Dimensions} from 'react-native';
+import {Platform, View, StyleSheet, Image, Pressable, Text, Animated, Dimensions, ImageBackground} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import ShowContext from '../ShowContext';
 
@@ -90,48 +90,49 @@ const UserHeader = () => {
           styles.menu,
           {transform: [{translateX: slideAnim}, {perspective: 1000}]},
         ]}>
-        <Image
-          source={require('../../images/ilendu-white-logo-latest.png')}
-          style={styles.img}
-        />
-        <View style={styles.sidemenu}>
-          <Text style={[styles.light, styles.bold]}>Go Premium</Text>
-          <View style={styles.line}></View>
+        <ImageBackground
+          source={require('../../images/menuBg.png')}
+          resizeMode="cover"
+          style={styles.menuBg}>
+          <View style={styles.sidemenu}>
+            <Text style={[styles.premium, styles.light, styles.bold]}>Go Premium</Text>
+            <View style={styles.line}></View>
 
-          <Text style={styles.light}>Map</Text>
-          <View style={styles.line}></View>
+            <Text style={styles.light}>Map</Text>
+            <View style={styles.line}></View>
 
-          <Text style={styles.light}>Item inventory</Text>
-          <View style={styles.line}></View>
+            <Text style={styles.light}>Item inventory</Text>
+            <View style={styles.line}></View>
 
-          <Text style={styles.light}>Settings</Text>
-          <View style={styles.line}></View>
+            <Text style={styles.light}>Settings</Text>
+            <View style={styles.line}></View>
 
-          <Text style={styles.light}>Inbox</Text>
-          <View style={styles.line}></View>
+            <Text style={styles.light}>Inbox</Text>
+            <View style={styles.line}></View>
 
-          <Text style={styles.light}>Need help?</Text>
+            <Text style={styles.light}>Need help?</Text>
 
-          <View style={styles.nav}>
-            <Pressable
-              onPress={showMenu}
-              android_ripple={{color: '#ccc', borderless: true}}
-              style={({pressed}) => [
-                {
-                  backgroundColor: pressed
-                    ? 'rgba(255, 255, 255, .8)'
-                    : 'transparent',
-                },
-                {borderRadius: 15},
-              ]}>
-              <FontAwesomeIcon
-                style={styles.close}
-                size={30}
-                icon="fa-regular fa-circle-xmark"
-              />
-            </Pressable>
+            <View style={styles.nav}>
+              <Pressable
+                onPress={showMenu}
+                android_ripple={{color: '#ccc', borderless: true}}
+                style={({pressed}) => [
+                  {
+                    backgroundColor: pressed
+                      ? 'rgba(255, 255, 255, .8)'
+                      : 'transparent',
+                  },
+                  {borderRadius: 15},
+                ]}>
+                <FontAwesomeIcon
+                  style={styles.close}
+                  size={30}
+                  icon="fa-regular fa-circle-xmark"
+                />
+              </Pressable>
+            </View>
           </View>
-        </View>
+        </ImageBackground>
       </Animated.View>
     </>
   );
@@ -139,7 +140,6 @@ const UserHeader = () => {
 
 const styles = StyleSheet.create({
   menu: {
-    paddingTop: Platform.OS === 'ios' ? 60 : 40,
     textAlign: 'center',
     alignItems: 'center',
     flex: 1,
@@ -148,15 +148,26 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: '#333',
-    zIndex: 100,
+    zIndex: 1000,
+  },
+  menuBg: {
+    width: '100%',
+    height: '100%',
   },
   menuShow: {
     display: 'flex',
   },
   sidemenu: {
-    marginTop: 50,
+    marginTop: 100,
     alignItems: 'center',
+  },
+  premium: {
+    borderRadius: 25,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#fefefe',
+    paddingVertical: 10,
+    paddingHorizontal: 30,
   },
   light: {
     color: '#eee',

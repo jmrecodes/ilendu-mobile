@@ -11,12 +11,12 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import ShowContext from '../ShowContext';
 import LinearGradient from 'react-native-linear-gradient';
 
-const SuolBody = ({hide = false}) => {
+const SuolBody = ({countrySelected, handleClick}) => {
   const {setShow} = useContext(ShowContext);
 
   const showSignUp = () => {
     const timeout = setTimeout(() => {
-      setShow(hide === false ? 'signUp' : 'signUp2');
+      setShow('signUp');
     }, 100);
 
     return () => {
@@ -25,28 +25,20 @@ const SuolBody = ({hide = false}) => {
   };
 
   const showHome = () => {
-    setShow('home2');
+    setShow('signUp');
   };
 
   return (
     <View style={styles.body}>
-      { hide === false ? (
-        <View style={styles.logoCon}>
-          <Image
-            style={styles.logo}
-            source={require('../../images/ilendu-app-black-logo.png')}
-          />
-        </View>
-      ) : (
-        <View style={[styles.logoCon, styles.logoConStart]}>
-          <Image
-            style={styles.logo}
-            source={require('../../images/ilendu-app-black-logo.png')}
-          />
-        </View>
-      )}
+      <View style={styles.logoCon}>
+        <Image
+          style={styles.logo}
+          source={require('../../images/ilendu-app-black-logo.png')}
+        />
+      </View>
 
       <Pressable
+        onPress={handleClick}
         style={({pressed}) => [
           {
             backgroundColor: pressed ? 'rgb(33, 33, 33)' : '#000',
@@ -56,11 +48,23 @@ const SuolBody = ({hide = false}) => {
         ]}
         android_ripple={{color: '#ccc', borderless: false}}>
         <View style={styles.country}>
-          <Image
-            source={require('../../images/circle-chile.png')}
-            style={styles.circle}
-          />
-          <Text style={styles.countryText}>Chile</Text>
+          {countrySelected === 'Chile' ? (
+            <>
+              <Image
+                source={require('../../images/circle-chile.png')}
+                style={styles.circle}
+              />
+              <Text style={styles.countryText}>Chile</Text>
+            </>
+          ) : (
+            <>
+              <Image
+                source={require('../../images/circle-us.png')}
+                style={styles.circle}
+              />
+              <Text style={styles.countryText}>United States</Text>
+            </>
+          )}
           <Image
             source={require('../../images/sort-down-white.png')}
             style={styles.down}
@@ -94,7 +98,9 @@ const SuolBody = ({hide = false}) => {
         onPress={showSignUp}
         style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, .7)',
+            backgroundColor: pressed
+              ? 'rgba(255, 255, 255, 1)'
+              : 'rgba(255, 255, 255, .7)',
           },
           styles.button,
           styles.buttonWhite,
@@ -107,7 +113,9 @@ const SuolBody = ({hide = false}) => {
             size={30}
             icon="fa-brands fa-google"
           />
-          <Text style={[styles.buttonText, styles.buttonWhiteText]}>Continue with Google</Text>
+          <Text style={[styles.buttonText, styles.buttonWhiteText]}>
+            Continue with Google
+          </Text>
         </View>
       </Pressable>
 
@@ -115,7 +123,9 @@ const SuolBody = ({hide = false}) => {
         onPress={showSignUp}
         style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'rgba(56, 103, 172, 1)' : 'rgba(56, 103, 172, .7)',
+            backgroundColor: pressed
+              ? 'rgba(56, 103, 172, 1)'
+              : 'rgba(56, 103, 172, .7)',
           },
           styles.button,
           styles.buttonWhite,
@@ -165,22 +175,23 @@ const SuolBody = ({hide = false}) => {
         ]}
         android_ripple={{color: '#ccc', borderless: false}}>
         <LinearGradient
-          colors={['#C96FD8', '#C96FD8', '#DD8593']}
-          style={styles.buttonLg}>
+          colors={['#DD8593', '#C96FD8']}
+          style={[styles.buttonLg]}
+          useAngle={true}
+          angle={-15}
+          angleCenter={{x: 0.5, y: 0}}>
           <Text style={[styles.buttonText, styles.signUp]}>GET STARTED</Text>
         </LinearGradient>
       </Pressable>
 
-      <Text style={styles.login}>
-        Already have an account? Login.
-      </Text>
+      <Text style={styles.login}>Already have an account? Login.</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   body: {
-    paddingVertical: 35,
+    paddingVertical: 40,
   },
   logoCon: {
     alignItems: 'center',
@@ -256,12 +267,8 @@ const styles = StyleSheet.create({
   buttonApple: {
     marginTop: 200,
   },
-  buttonGoogle: {
-
-  },
-  buttonFb: {
-
-  },
+  buttonGoogle: {},
+  buttonFb: {},
   buttonPhoneNumber: {
     backgroundColor: 'rgba(95, 160, 110, .7)',
   },

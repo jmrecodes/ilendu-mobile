@@ -38,6 +38,7 @@ import {faArrowTurnUp} from '@fortawesome/free-solid-svg-icons/faArrowTurnUp';
 import {faXmark} from '@fortawesome/free-solid-svg-icons/faXmark';
 import {faPen} from '@fortawesome/free-solid-svg-icons/faPen';
 import {faHands} from '@fortawesome/free-solid-svg-icons/faHands';
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons/faArrowLeft';
 import {library} from '@fortawesome/fontawesome-svg-core';
 
 library.add(
@@ -73,9 +74,11 @@ library.add(
   faXmark,
   faPen,
   faHands,
+  faArrowLeft,
 );
 
 import ShowContext from './components/ShowContext';
+import YourinContext from './components/YourinContext';
 import Home from './components/Home/Home';
 import SignUpOrLogin from './components/SignUpOrLogin/SignUpOrLogin';
 import SignUp from './components/SignUp/SignUp';
@@ -94,6 +97,7 @@ import ReserveDetail from './components/LoggedIn/Product/Reserve/ReserveDetail';
 
 const App = () => {
   const [show, setShow] = useState('0');
+  const [yourin, setYourin] = useState('0');
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -139,12 +143,16 @@ const App = () => {
         <SignUpOrLogin hide={true} />
       ) : show === 'signUpOrLogin' ? (
         <SignUpOrLogin />
-      ) : show === 'signUp' ? (
-        <SignUp />
+      ) : show === 'signUp' || show === 'login' ? (
+        <YourinContext.Provider value={{yourin, setYourin}}>
+          <SignUp />
+        </YourinContext.Provider>
       ) : show === 'signUp2' ? (
         <SignUp hide={true} />
       ) : show === 'loggedIn' ? (
-        <UserHome />
+        <YourinContext.Provider value={{yourin, setYourin}}>
+          <UserHome />
+        </YourinContext.Provider>
       ) : show === 'dashboard' ? (
         <Dashboard />
       ) : show === 'product' ? (

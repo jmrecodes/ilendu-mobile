@@ -1,9 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {
-  Animated,
+  Animated, Image,
   ImageBackground,
-  Platform,
-  StyleSheet,
+  Platform, Pressable,
+  StyleSheet, Text,
   TextInput,
   View,
 } from 'react-native';
@@ -11,12 +11,17 @@ import Header from './UserHeader';
 import MainContainer from '../MainContainer';
 import Nav from './Nav';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import commonStyles from './Product/commonStyles';
+import LinearGradient from 'react-native-linear-gradient';
+import YourinContext from '../YourinContext';
 
 const UserHome = () => {
   const [search, onChangeSearch] = useState('');
   const [category, onChangeCategory] = useState('Category');
   const [availability, onChangeAvail] = useState('Availability');
   const [moreFilters, onChangeMore] = useState('More Filters');
+
+  const {yourin, setYourin} = useContext(YourinContext);
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -28,6 +33,10 @@ const UserHome = () => {
       duration: 500,
       useNativeDriver: true,
     }).start();
+  };
+
+  const hideYourin = () => {
+    setYourin('hide');
   };
 
   useEffect(() => {
@@ -88,8 +97,50 @@ const UserHome = () => {
             </View>
           </View>
         </ImageBackground>
+
+        <Nav />
       </MainContainer>
-      <Nav />
+
+      <View style={[styles.dark, yourin === '0' ? null : styles.hide]} />
+
+      {yourin === '0' ? (
+        <View style={styles.yourin}>
+          <ImageBackground
+            source={require('../../images/yourinBg4.png')}
+            resizeMode="cover"
+            imageStyle={styles.yourinBg}>
+            <Image
+              source={require('../../images/start-1.png')}
+              style={styles.yourinImg}
+              resizeMode={'contain'}
+            />
+            <View style={styles.yourinDesc}>
+              <Text style={[commonStyles.h1, commonStyles.bold, commonStyles.alignCenter]}>You are in.</Text>
+              <Text style={[commonStyles.alignCenter]}>We are happy to have you here. Check out your profile to complete your information and explore your options.</Text>
+
+              <Pressable
+                onPress={hideYourin}
+                android_ripple={{color: '#ccc', borderless: false}}
+                style={({pressed}) => [
+                  styles.yourinBtn,
+                  {
+                    paddingTop: pressed ? 2 : 0,
+                    marginBottom: pressed ? 13 : 15,
+                  },
+                ]}>
+                <LinearGradient
+                  colors={['#DD8593', '#C96FD8']}
+                  style={[styles.yourinBtn, styles.gradient]}
+                  useAngle={true}
+                  angle={-15}
+                  angleCenter={{x: 0.5, y: 0}}>
+                  <Text style={[styles.yourinText]}>OK</Text>
+                </LinearGradient>
+              </Pressable>
+            </View>
+          </ImageBackground>
+        </View>
+      ) : null}
     </Animated.View>
   );
 };
@@ -146,6 +197,56 @@ const styles = StyleSheet.create({
     backgroundColor: '#555',
     color: '#fff',
   },
+  dark: {
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    backgroundColor: 'rgba(0, 0, 0, .4)',
+    zIndex: 90,
+  },
+  hide: {
+    display: 'none',
+  },
+  yourin: {
+    position: 'absolute',
+    top: '20%',
+    left: '5%',
+    width: '90%',
+    zIndex: 100,
+  },
+  yourinBg: {
+    borderRadius: 25,
+  },
+  yourinImg: {
+    width: '90%',
+    height: 300,
+    marginLeft: '5%',
+  },
+  yourinDesc: {
+    backgroundColor: '#fff',
+    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: 25,
+    padding: 25,
+  },
+  yourinBtn: {
+    borderRadius: 20,
+    marginTop: 10,
+  },
+  yourinText: {
+    textAlign: 'center',
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  gradient: {
+    paddingVertical: 10,
+  }
 });
 
 export default UserHome;
+
+
+

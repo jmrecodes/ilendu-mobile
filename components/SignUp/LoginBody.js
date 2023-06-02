@@ -5,7 +5,7 @@ import CheckBox from '@react-native-community/checkbox';
 import LinearGradient from 'react-native-linear-gradient';
 import commonStyles from '../LoggedIn/Product/commonStyles';
 
-const SuBody = ({handleClick}) => {
+const LoginBody = ({handleClick}) => {
   const [email, onChangeEmail] = useState('');
   const [firstname, onChangeFn] = useState('');
   const [lastname, onChangeLn] = useState('');
@@ -15,25 +15,51 @@ const SuBody = ({handleClick}) => {
 
   return (
     <View style={styles.body}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeFn}
-          value={firstname}
-          placeholder={'First Name'}
-          placeholderTextColor="#8A8A8A"
-        />
-      </View>
+      <Pressable
+        onPress={handleClick}
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'rgba(230, 230, 230, .3)' : 'rgb(255, 255, 255)',
+          },
+          styles.button,
+          styles.login
+        ]}
+        android_ripple={{color: '#ccc', borderless: false}}>
+        <View style={[commonStyles.flexRow, styles.fb]}>
+          <FontAwesomeIcon
+            style={styles.icon}
+            size={25}
+            icon="fa-brands fa-facebook"
+            color={'#316CCB'}
+          />
+          <Text style={styles.loginText}>&nbsp; Login with Facebook</Text>
+        </View>
+      </Pressable>
 
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={[styles.input]}
-          onChangeText={onChangeLn}
-          value={lastname}
-          placeholder={'Last Name'}
-          placeholderTextColor="#8A8A8A"
-        />
-      </View>
+      <Pressable
+        onPress={handleClick}
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'rgba(230, 230, 230, .3)' : 'rgb(255, 255, 255)',
+          },
+          styles.button,
+          styles.login
+        ]}
+        android_ripple={{color: '#ccc', borderless: false}}>
+        <View style={[commonStyles.flexRow, styles.fb]}>
+          <FontAwesomeIcon
+            style={styles.icon}
+            size={25}
+            icon="fa-brands fa-google"
+          />
+          <Text style={styles.loginText}>&nbsp; Login with Google</Text>
+        </View>
+      </Pressable>
+
+      <Text
+        style={[styles.email, commonStyles.center, commonStyles.small, commonStyles.silent]}>
+        Or login with your email
+      </Text>
 
       <View style={styles.inputContainer}>
         <TextInput
@@ -60,23 +86,6 @@ const SuBody = ({handleClick}) => {
         At least 8 characters, 1 uppercase letter, 1 number, 1 symbol
       </Text>
 
-      <View style={styles.agreeUpdatesContainer}>
-        <View style={[styles.inputContainer, styles.checkBoxContainer]}>
-          <CheckBox
-            onTintColor={'#333'}
-            onCheckColor={'#333'}
-            disabled={false}
-            value={toggleUpdates}
-            boxType="square"
-            onValueChange={newValue => setToggleUpdates(newValue)}
-            style={styles.checkBox}
-          />
-          <Text style={[styles.tos, styles.updates]}>
-            Yes, send me deals, discounts, and updates!
-          </Text>
-        </View>
-      </View>
-
       <Pressable
         onPress={handleClick}
         android_ripple={{color: '#ccc', borderless: false}}
@@ -90,13 +99,15 @@ const SuBody = ({handleClick}) => {
         <LinearGradient
           colors={['#DD8593', '#C96FD8']}
           style={[styles.button, styles.gradient]}
-          useAngle={true} angle={-15} angleCenter={{x:0.5,y:0}}>
-          <Text style={[styles.buttonText, styles.signUp]}>CREATE ACCOUNT</Text>
+          useAngle={true}
+          angle={-15}
+          angleCenter={{x: 0.5, y: 0}}>
+          <Text style={[styles.buttonText, styles.signUp]}>LOGIN</Text>
         </LinearGradient>
       </Pressable>
 
       <Text style={[styles.buttonSub, commonStyles.center]}>
-        By clicking Create Account, you agree to our
+        By clicking Login, you agree to our
       </Text>
       <Text
         style={[styles.buttonSub, commonStyles.center, commonStyles.underline]}>
@@ -108,7 +119,7 @@ const SuBody = ({handleClick}) => {
 
 const styles = StyleSheet.create({
   body: {
-    paddingVertical: 15,
+    paddingVertical: 25,
     alignItems: 'center',
   },
   title: {
@@ -180,6 +191,27 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#8A8A8A',
   },
+  login: {
+    marginBottom: 5,
+  },
+  fb: {
+    width: 220,
+    paddingVertical: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#BDBDBD',
+    borderRadius: 25,
+  },
+  email: {
+    marginVertical: 20,
+  },
 });
 
-export default SuBody;
+export default LoginBody;
+
+
+
+
+
