@@ -79,6 +79,7 @@ library.add(
 
 import ShowContext from './components/ShowContext';
 import YourinContext from './components/YourinContext';
+import UserContext from './components/UserContext';
 import Home from './components/Home/Home';
 import SignUpOrLogin from './components/SignUpOrLogin/SignUpOrLogin';
 import SignUp from './components/SignUp/SignUp';
@@ -94,10 +95,12 @@ import More from './components/LoggedIn/Product/More';
 import AccountSettings from './components/LoggedIn/Settings/Settings';
 import MessageDetail from './components/LoggedIn/Inbox/MessageDetail';
 import ReserveDetail from './components/LoggedIn/Product/Reserve/ReserveDetail';
+import MyItems from './components/LoggedIn/Product/MyItems';
 
 const App = () => {
   const [show, setShow] = useState('0');
   const [yourin, setYourin] = useState('0');
+  const [firstName, setFirstName] = useState('User');
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -145,10 +148,14 @@ const App = () => {
         <SignUpOrLogin />
       ) : show === 'signUp' || show === 'login' ? (
         <YourinContext.Provider value={{yourin, setYourin}}>
-          <SignUp />
+          <UserContext.Provider value={{firstName, setFirstName}}>
+            <SignUp />
+          </UserContext.Provider>
         </YourinContext.Provider>
       ) : show === 'signUp2' ? (
-        <SignUp hide={true} />
+        <UserContext.Provider value={{firstName, setFirstName}}>
+          <SignUp hide={true} />
+        </UserContext.Provider>
       ) : show === 'loggedIn' ? (
         <YourinContext.Provider value={{yourin, setYourin}}>
           <UserHome />
@@ -165,10 +172,14 @@ const App = () => {
         <Search />
       ) : show === 'favorite' ? (
         <Favorite />
+      ) : show === 'myitems' ? (
+        <MyItems />
       ) : show === 'inbox' ? (
         <Inbox />
       ) : show === 'more' ? (
-        <More />
+        <UserContext.Provider value={{firstName, setFirstName}}>
+          <More />
+        </UserContext.Provider>
       ) : show === 'settings' ? (
         <AccountSettings />
       ) : show === 'message' ? (

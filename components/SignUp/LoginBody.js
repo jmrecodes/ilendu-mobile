@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import CheckBox from '@react-native-community/checkbox';
 import LinearGradient from 'react-native-linear-gradient';
 import commonStyles from '../LoggedIn/Product/commonStyles';
+import ShowContext from '../ShowContext';
+import UserContext from '../UserContext';
 
 const LoginBody = ({handleClick}) => {
   const [email, onChangeEmail] = useState('');
@@ -13,16 +15,54 @@ const LoginBody = ({handleClick}) => {
   const [toggleAgree, setToggleAgree] = useState(false);
   const [toggleUpdates, setToggleUpdates] = useState(false);
 
+  const [login, setLogin] = useState('');
+  const {setFirstName} = useContext(UserContext);
+
+  const loginCheck = () => {
+    return fetch('https://dev.ilendu.co/api/login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then(response => response.json())
+      .then(json => {
+        if (json.status === 'ok') {
+          console.log(json);
+          setLogin(true);
+          setFirstName(json.first_name);
+          handleClick();
+        } else {
+          console.log(json);
+          setLogin(false);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  const onClickEmailPass = () => {
+    setLogin('');
+  };
+
   return (
     <View style={styles.body}>
       <Pressable
         onPress={handleClick}
         style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'rgba(230, 230, 230, .3)' : 'rgb(255, 255, 255)',
+            backgroundColor: pressed
+              ? 'rgba(230, 230, 230, .3)'
+              : 'rgb(255, 255, 255)',
           },
           styles.button,
-          styles.login
+          styles.login,
         ]}
         android_ripple={{color: '#ccc', borderless: false}}>
         <View style={[commonStyles.flexRow, styles.fb]}>
@@ -40,10 +80,12 @@ const LoginBody = ({handleClick}) => {
         onPress={handleClick}
         style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'rgba(230, 230, 230, .3)' : 'rgb(255, 255, 255)',
+            backgroundColor: pressed
+              ? 'rgba(230, 230, 230, .3)'
+              : 'rgb(255, 255, 255)',
           },
           styles.button,
-          styles.login
+          styles.login,
         ]}
         android_ripple={{color: '#ccc', borderless: false}}>
         <View style={[commonStyles.flexRow, styles.fb]}>
@@ -57,24 +99,38 @@ const LoginBody = ({handleClick}) => {
       </Pressable>
 
       <Text
-        style={[styles.email, commonStyles.center, commonStyles.small, commonStyles.silent]}>
+        style={[
+          styles.email,
+          commonStyles.center,
+          commonStyles.small,
+          commonStyles.silent,
+        ]}>
         Or login with your email
       </Text>
 
       <View style={styles.inputContainer}>
         <TextInput
-          style={[styles.input]}
-          onChangeText={onChangeEmail}
+          style={[styles.input, login === false ? styles.red : null]}
+          autoCapitalize="none"
+          onChangeText={e => {
+            onChangeEmail(e);
+            onClickEmailPass(e);
+          }}
+          onFocus={onClickEmailPass}
           value={email}
-          placeholder={'Email'}
+          placeholder="Email"
           placeholderTextColor="#8A8A8A"
         />
       </View>
 
       <View style={styles.inputContainer}>
         <TextInput
-          style={[styles.input]}
-          onChangeText={onChangePassword}
+          style={[styles.input, login === false ? styles.red : null]}
+          onChangeText={e => {
+            onChangePassword(e);
+            onClickEmailPass(e);
+          }}
+          onFocus={onClickEmailPass}
           value={password}
           placeholder={'Password'}
           placeholderTextColor="#8A8A8A"
@@ -87,7 +143,7 @@ const LoginBody = ({handleClick}) => {
       </Text>
 
       <Pressable
-        onPress={handleClick}
+        onPress={loginCheck}
         android_ripple={{color: '#ccc', borderless: false}}
         style={({pressed}) => [
           [styles.button, styles.buttonContainer],
@@ -207,11 +263,9 @@ const styles = StyleSheet.create({
   email: {
     marginVertical: 20,
   },
+  red: {
+    color: '#CB402D',
+  },
 });
 
 export default LoginBody;
-
-
-
-
-

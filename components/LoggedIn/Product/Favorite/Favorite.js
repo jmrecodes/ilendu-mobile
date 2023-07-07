@@ -12,11 +12,6 @@ import Header from '../../UserHeader';
 import Nav from '../../Nav';
 import FavoriteTabs from './FavoriteTabs';
 import Image from './Image';
-import Detail from '../Detail';
-import Description from '../Description';
-import Location from '../Location';
-import BorrowPeriod from '../BorrowPeriod';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import commonStyles from '../commonStyles';
 import ShowContext from '../../../ShowContext';
 

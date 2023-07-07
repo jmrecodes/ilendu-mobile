@@ -20,10 +20,12 @@ import BorrowPeriod from './BorrowPeriod';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import commonStyles from './commonStyles';
 import ShowContext from '../../ShowContext';
+import UserContext from '../../UserContext';
 
 const More = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const {setShow} = useContext(ShowContext);
+  const {firstName, setFirstName} = useContext(UserContext);
 
   let fadeIn: function;
   fadeIn = () => {
@@ -40,12 +42,22 @@ const More = () => {
   });
 
   const showHome = () => {
+    setFirstName('User');
     setShow('home2');
   };
 
   const showSettings = () => {
     setShow('settings');
   };
+
+  const showWishList = () => {
+    setShow('favorite');
+  };
+
+  const showMyItems = () => {
+    setShow('myitems');
+  };
+
 
   return (
     <Animated.View
@@ -70,7 +82,7 @@ const More = () => {
             />
           </View>
           <View style={styles.profileDesc}>
-            <Text style={commonStyles.h2}>Hola Camila!</Text>
+            <Text style={commonStyles.h2}>Hola {firstName}!</Text>
             <Text style={styles.viewProfile}>View and edit profile</Text>
           </View>
         </View>
@@ -116,6 +128,7 @@ const More = () => {
           </Pressable>
 
           <Pressable
+            onPress={showWishList}
             android_ripple={{color: '#ccc', borderless: true}}
             style={({pressed}) => [
               {
@@ -134,6 +147,7 @@ const More = () => {
           </Pressable>
 
           <Pressable
+            onPress={showMyItems}
             android_ripple={{color: '#ccc', borderless: true}}
             style={({pressed}) => [
               {
